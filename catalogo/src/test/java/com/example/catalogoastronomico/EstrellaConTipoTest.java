@@ -1,11 +1,11 @@
 package com.example.catalogoastronomico;
 
-import org.junit.Test;
+import org.testng.annotations.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.testng.AssertJUnit.assertEquals;
 
 public class EstrellaConTipoTest {
-/*
+
       @Test
       public void crear_objeto_y_getters() {
          Galaxia g = new Galaxia("Galaxia", 1.1, 2.2);
@@ -52,5 +52,32 @@ public class EstrellaConTipoTest {
          EstrellaConTipo a = new EstrellaConTipo("Alfa Centauri", -0.27, 4.5, 3, g, TipoEstrella.ENANA_BLANCA);
          assertEquals("objeto-Astro {nombre: Alfa Centauri, tipo: EstrellaConTipo, brillo: -0.27, distancia: 4.5, planetas: 3, galaxia: Vía Láctea, info: Enana Blanca \"https://es.wikipedia.org/wiki/Enana_blanca\"}", a.toString());
       }
-*/
+
+    @Test
+    public void anade_astro_simple_vista() {
+        CatalogoAstronomico c = new CatalogoAstronomico();
+        Galaxia g = new Galaxia("galaxia", 0, 2.2);
+        Estrella e = new EstrellaConTipo("estrella", 4, 2.2, 3, g, TipoEstrella.ENANA_AMARILLA);
+        c.anade(e);
+        assertEquals(2, c.getCatalogo().size());
+        assertEquals(1, c.getGalaxias().size());
+        assertEquals(true, c.getGalaxias().contains(g.getNombre()));
+        assertEquals(1, c.filtraEstrellasSimpleVista().size());
+        assertEquals(1, c.getNumEstrellasSimpleVista());
+    }
+
+    @Test
+    public void borrar_astro_simple_vista() {
+        CatalogoAstronomico c = new CatalogoAstronomico();
+        Galaxia g = new Galaxia("galaxia", 0, 2.2);
+        Estrella e = new EstrellaConTipo("estrella", 4, 2.2, 3, g, TipoEstrella.ENANA_BLANCA);
+        c.anade(e);
+        c.borrar("estrella");
+        assertEquals(false, c.getCatalogo().isEmpty());
+        assertEquals(false, c.getGalaxias().isEmpty());
+        assertEquals(0, c.filtraEstrellasSimpleVista().size());
+        assertEquals(0, c.getNumEstrellasSimpleVista());
+        assertEquals(true, c.getGalaxias().contains(g.getNombre()));
+    }
+
 }
