@@ -29,9 +29,10 @@ public class EstrellaConTipo extends Estrella {
     public String toString() {
         return "objeto-Astro {" +
                 "nombre: " + ((Estrella)this).getNombre() +
-                ", tipo: " + "Estrella" +
+                ", tipo: " + "EstrellaConTipo" +
                 ", brillo: " + ((Estrella)this).getBrillo() +
                 ", distancia: " + ((Estrella)this).getDistancia() +
+                ", planetas: " + ((Estrella)this).getPlanetas() +
                 ", galaxia: " + ((Estrella)this).getGalaxia().getNombre() +
                 ", info: " + this.tipo.getInfoTipo()+ " " + this.tipo.getInfoWiki() +
                 '}';

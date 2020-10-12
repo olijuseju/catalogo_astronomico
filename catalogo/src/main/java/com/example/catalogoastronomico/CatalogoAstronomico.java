@@ -80,6 +80,9 @@ public class CatalogoAstronomico {
                 galaxias.add(((Planeta)a).getEstrella().getGalaxia().getNombre());
                 catalogo.add(((Planeta)a).getEstrella());
                 catalogo.add(((Planeta)a).getEstrella().getGalaxia());
+                if (((Planeta)a).getEstrella().visibleCon().equals("a simple vista")) {
+                    numEstrellasSimpleVista ++;
+                }
             }
             return true;
         }else{
